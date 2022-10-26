@@ -1,0 +1,21 @@
+// Vitest Snapshot v1
+
+exports[`App > add 1`] = `
+<body>
+  <div>
+    <div>
+      Hello world!
+    </div>
+  </div>
+</body>
+`;
+
+exports[`App > should render 1`] = `
+<body>
+  <div>
+    <div>
+      Hello world!
+    </div>
+  </div>
+</body>
+`;
