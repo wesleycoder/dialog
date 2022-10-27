@@ -1,20 +1,26 @@
+import { useRef } from 'react'
 import styles from './App.module.css'
-import { Dialog } from './components/dialog'
+import { Dialog, DialogHandle } from './components/dialog'
 
 function App() {
+  const dialogRef = useRef<DialogHandle>(null)
+
   return (
     <>
       <div className={styles.content}>
         <button
           className={styles.openDialog}
           onClick={() => {
-            // TODO: Open the dialog
-            console.log('open dialog')
+            console.log('dialogRef.current', dialogRef.current)
+            dialogRef.current?.showModal()
           }}
         >
           Open dialog
         </button>
-        <Dialog title="Lemon">
+        <Dialog
+          ref={dialogRef}
+          title="Lemon"
+        >
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit?
           Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum
           porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam
