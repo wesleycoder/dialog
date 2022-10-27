@@ -15,9 +15,25 @@
   flex-direction: column;
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.close {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
 .title {
   color: red;
-  padding: 1em;
 }
 
 .content {

@@ -1,4 +1,5 @@
 import { ForwardedRef, forwardRef, PropsWithChildren, ReactNode, useImperativeHandle, useRef } from 'react'
+import { ReactComponent as IconClose } from '../../assets/icon-close.svg'
 import styles from './dialog.module.css'
 
 type DialogProps = PropsWithChildren<{ title: ReactNode }>
@@ -31,7 +32,16 @@ const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<Di
       ref={dialogRef}
       className={styles.dialog}
     >
-      <h2 className={styles.title}>{title}</h2>
+      <header className={styles.header}>
+        <h2 className={styles.title}>{title}</h2>
+        <button
+          autoFocus
+          className={styles.close}
+          onClick={() => dialogRef.current?.close()}
+        >
+          <IconClose />
+        </button>
+      </header>
       <div className={styles.content}>{children}</div>
     </dialog>
   )

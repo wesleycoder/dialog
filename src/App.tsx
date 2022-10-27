@@ -11,7 +11,6 @@ function App() {
         <button
           className={styles.openDialog}
           onClick={() => {
-            console.log('dialogRef.current', dialogRef.current)
             dialogRef.current?.showModal()
           }}
         >
