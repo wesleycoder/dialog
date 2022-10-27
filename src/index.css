@@ -4,12 +4,26 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --color-primary: #026C00;
+  --color-pastel: #EBEADF;
+  --color-white: #FFFEF9;
+  --color-accent: #F7CE46;
+  --color-black: #000000
 }
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-pastel);
+  font-family: 'Inter', sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  place-items: center;
+  justify-content: center;
 }
