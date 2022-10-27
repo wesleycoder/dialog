@@ -1,0 +1,27 @@
+.dialog {
+  position: fixed;
+  top: auto;
+  bottom: 0;
+  max-width: 100vw;
+  max-height: 80vh;
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+}
+
+.dialog:modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: red;
+  padding: 1em;
+}
+
+.content {
+  overflow: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+}

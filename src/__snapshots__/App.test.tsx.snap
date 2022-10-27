@@ -1,20 +1,30 @@
 // Vitest Snapshot v1
 
-exports[`App > add 1`] = `
-<body>
-  <div>
-    <div>
-      Hello world!
-    </div>
-  </div>
-</body>
-`;
-
 exports[`App > should render 1`] = `
 <body>
   <div>
-    <div>
-      Hello world!
+    <div
+      class="_content_6dc87e"
+    >
+      <button
+        class="_openDialog_6dc87e"
+      >
+        Open dialog
+      </button>
+      <dialog
+        class="_dialog_40d523"
+      >
+        <h2
+          class="_title_40d523"
+        >
+          Lemon
+        </h2>
+        <div
+          class="_content_40d523"
+        >
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem consequatur libero totam deleniti suscipit? Repellendus voluptatum officia, in, tempora dignissimos illo dolorem necessitatibus eos ex, provident rerum porro fugiat commodi!
+        </div>
+      </dialog>
     </div>
   </div>
 </body>
