@@ -4,19 +4,23 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  --color-primary: #026C00;
-  --color-pastel: #EBEADF;
-  --color-white: #FFFEF9;
-  --color-accent: #F7CE46;
+  --color-primary: #026c00;
+  --color-pastel: #ebeadf;
+  --color-white: #fffef9;
+  --color-accent: #f7ce46;
   --color-black: #000000;
   --color-backdrop: rgba(0, 0, 0, 0.8);
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
   margin: 0;
   display: flex;
   min-width: 320px;
-  min-height: 100vh;
   background-color: var(--color-pastel);
   font-family: 'Inter', sans-serif;
   font-weight: 400;
