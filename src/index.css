@@ -9,6 +9,7 @@
   --color-white: #FFFEF9;
   --color-accent: #F7CE46;
   --color-black: #000000;
+  --color-backdrop: rgba(0, 0, 0, 0.8);
 }
 
 body {
