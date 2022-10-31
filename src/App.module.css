@@ -5,11 +5,11 @@
   align-items: center;
   justify-content: center;
   color: var(--color-white);
-  background-color: var(--color-accent);
 }
 
 .openDialog {
   border: none;
   color: var(--color-white);
   background-color: var(--color-primary);
+  padding: 1rem 2rem;
 }

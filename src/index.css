@@ -8,7 +8,7 @@
   --color-pastel: #EBEADF;
   --color-white: #FFFEF9;
   --color-accent: #F7CE46;
-  --color-black: #000000
+  --color-black: #000000;
 }
 
 body {
@@ -18,6 +18,9 @@ body {
   min-height: 100vh;
   background-color: var(--color-pastel);
   font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--color-black);
 }
 
 #root {
