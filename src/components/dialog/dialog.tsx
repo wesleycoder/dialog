@@ -20,6 +20,7 @@ export type DialogHandle = {
 } & Partial<HTMLDialogElement>
 
 const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<DialogHandle>) => {
+  const [isExpanded, setExpanded] = useState(false)
   const [firstTouch, setFirstTouch] = useState<number>(0)
   const [lastTouch, setLastTouch] = useState<number>(0)
   const dialogRef = useRef<HTMLDialogElement>(null)
@@ -27,21 +28,23 @@ const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<Di
   useImperativeHandle(
     _ref,
     () => ({
+      open: undefined,
       showModal() {
-        if (dialogRef.current) {
-          dialogRef.current.showModal()
-        }
+        dialogRef.current?.showModal()
       },
       close() {
-        if (dialogRef.current) {
-          dialogRef.current.close()
-        }
+        dialogRef.current?.close()
       },
     }),
     []
   )
 
-  const closeDialog = useCallback(() => dialogRef.current?.close(), [])
+  const closeDialog = useCallback(() => {
+    setExpanded(false)
+    setFirstTouch(0)
+    setLastTouch(0)
+    dialogRef.current?.close()
+  }, [])
 
   const handleClose: MouseEventHandler<HTMLDialogElement> = async e => {
     const isBackdrop = e.target instanceof Element && e.target.nodeName === 'DIALOG'
@@ -54,18 +57,31 @@ const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<Di
       setFirstTouch(e.targetTouches[0].clientY)
     }
 
-    dialogRef.current?.style.setProperty('top', `${e.targetTouches[0].clientY}px`)
-    dialogRef.current?.style.setProperty('transition', 'none')
-    setLastTouch(e.targetTouches[0].clientY)
+    const isHeader = e.target instanceof Element && e.target.nodeName === 'HEADER'
+
+    const isUp = !isExpanded && e.targetTouches[0].clientY < firstTouch
+    const isDown = isHeader && isExpanded && e.targetTouches[0].clientY > lastTouch
+
+    if (isUp || isDown) {
+      dialogRef.current?.style.setProperty('top', `${e.targetTouches[0].clientY}px`)
+      dialogRef.current?.style.setProperty('transition', 'none')
+      setLastTouch(e.targetTouches[0].clientY)
+    } else {
+      dialogRef.current?.style.removeProperty('top')
+      dialogRef.current?.style.removeProperty('transition')
+    }
   }
 
   const handleTouchEnd: TouchEventHandler<HTMLDialogElement> = e => {
     dialogRef.current?.style.removeProperty('top')
     dialogRef.current?.style.removeProperty('transition')
-    if (lastTouch <= firstTouch - 200) {
+
+    if (!isExpanded && lastTouch <= firstTouch - 200) {
       dialogRef.current?.classList.add(styles.expanded)
-    } else {
+      setExpanded(true)
+    } else if (isExpanded && lastTouch >= firstTouch + 200) {
       dialogRef.current?.classList.remove(styles.expanded)
+      setExpanded(false)
     }
     Promise.allSettled(e.currentTarget.getAnimations().map(animation => animation.finished)).then(() => {
       dialogRef.current?.style.removeProperty('top')
@@ -78,6 +94,7 @@ const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<Di
   return (
     <dialog
       ref={dialogRef}
+      open={undefined}
       className={styles.dialog}
       onClose={closeDialog}
       onClick={handleClose}

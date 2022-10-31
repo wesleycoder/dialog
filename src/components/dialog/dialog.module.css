@@ -34,6 +34,8 @@
   flex-direction: column;
   flex-grow: 1;
   padding: 32px;
+  padding-bottom: 0;
+  max-height: calc(100% - 32px);
 }
 
 .expanded {
