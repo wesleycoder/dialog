@@ -6,7 +6,9 @@ import {
   ReactNode,
   TouchEventHandler,
   useCallback,
+  useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useRef,
   useState,
 } from 'react'
@@ -17,6 +19,7 @@ type DialogProps = PropsWithChildren<{ title: ReactNode }>
 
 export type DialogHandle = {
   showModal(): void
+  close(): void
 } & Partial<HTMLDialogElement>
 
 const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<DialogHandle>) => {
@@ -24,16 +27,36 @@ const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<Di
   const [firstTouch, setFirstTouch] = useState<number>(0)
   const [lastTouch, setLastTouch] = useState<number>(0)
   const dialogRef = useRef<HTMLDialogElement>(null)
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    dialogRef.current?.addEventListener('close', () => {
+      setIsOpen(false)
+    })
+  })
+
+  useLayoutEffect(() => {
+    if (isOpen) {
+      document.body.style.overscrollBehaviorY = 'contain'
+    } else {
+      document.body.style.overscrollBehaviorY = 'auto'
+    }
+
+    return () => {
+      document.body.style.overscrollBehaviorY = 'auto'
+    }
+  }, [isOpen])
 
   useImperativeHandle(
     _ref,
     () => ({
-      open: undefined,
       showModal() {
         dialogRef.current?.showModal()
+        setIsOpen(true)
       },
       close() {
         dialogRef.current?.close()
+        dialogRef.current?.removeAttribute('open')
       },
     }),
     []
@@ -63,6 +86,7 @@ const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<Di
     const isDown = isHeader && isExpanded && e.targetTouches[0].clientY > lastTouch
 
     if (isUp || isDown) {
+      e.stopPropagation()
       dialogRef.current?.style.setProperty('top', `${e.targetTouches[0].clientY}px`)
       dialogRef.current?.style.setProperty('transition', 'none')
       setLastTouch(e.targetTouches[0].clientY)
@@ -73,13 +97,14 @@ const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<Di
   }
 
   const handleTouchEnd: TouchEventHandler<HTMLDialogElement> = e => {
+    const dragThreshold = 200
     dialogRef.current?.style.removeProperty('top')
     dialogRef.current?.style.removeProperty('transition')
 
-    if (!isExpanded && lastTouch <= firstTouch - 200) {
+    if (!isExpanded && lastTouch <= firstTouch - dragThreshold) {
       dialogRef.current?.classList.add(styles.expanded)
       setExpanded(true)
-    } else if (isExpanded && lastTouch >= firstTouch + 200) {
+    } else if (isExpanded && lastTouch >= firstTouch + dragThreshold) {
       dialogRef.current?.classList.remove(styles.expanded)
       setExpanded(false)
     }

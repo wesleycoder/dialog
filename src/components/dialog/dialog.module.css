@@ -27,6 +27,7 @@
 .dialog:modal {
   display: flex;
   flex-direction: column;
+  overscroll-behavior: contain;
 }
 
 .wrapper {
