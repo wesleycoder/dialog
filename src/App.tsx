@@ -1,9 +1,42 @@
 import clsx from 'clsx'
+import { useCallback, useState } from 'react'
 import styles from './App.module.css'
-import { Dialog, DialogHandle } from './components/dialog'
+import { Dialog } from './components/dialog'
+import { useArray } from './utils/useArray'
+
+const loremIpsumApi = 'https://baconipsum.com/api/?type=meat-and-filler&paras=1'
+
+const defaultText = `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+A ex error velit labore minima ullam porro doloremque minus assumenda neque quia enim culpa quasi hic,
+facilis quo nemo aliquid dolor?`
+
+type LoremResponse = string[]
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
+  const paragraphs = useArray([defaultText])
+
+  const addParagraph = useCallback(async () => {
+    try {
+      const res = await fetch(loremIpsumApi)
+
+      if (res.ok) {
+        const data: LoremResponse = await res.json()
+        paragraphs.add(data[0])
+      } else {
+        paragraphs.add(defaultText)
+        throw new Error(`Bad API response (${loremIpsumApi}): added default text`)
+      }
+    } catch (e) {
+      // TODO: inform user of error
+      console.error(e)
+    }
+  }, [])
+
+  const resetParagraphs = useCallback(() => {
+    paragraphs.clear()
+    paragraphs.add(defaultText)
+  }, [])
 
   return (
     <>
@@ -14,89 +47,32 @@ function App() {
         >
           Open dialog
         </button>
+
+        <button
+          className={clsx(styles.button, styles.secondaryButton)}
+          onClick={addParagraph}
+        >
+          Add paragraph
+        </button>
+
+        <button
+          className={clsx(styles.button, styles.secondaryButton)}
+          onClick={resetParagraphs}
+        >
+          Reset content
+        </button>
+
+        <p>Current paragraph count: {paragraphs.value.length}</p>
+
         <Dialog
           title="Lemon ipsum"
           isOpen={isOpen}
           closeOnOverlayClick={true}
           onClose={() => setIsOpen(false)}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex error velit labore minima ullam porro doloremque
-          minus assumenda neque quia enim culpa quasi hic, facilis quo nemo aliquid dolor?
+          {paragraphs.value.map(text => (
+            <p key={text}>{text}</p>
+          ))}
           <br />
         </Dialog>
       </div>
