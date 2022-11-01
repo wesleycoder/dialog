@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useCallback, useState } from 'react'
 import styles from './App.module.css'
 import { ReactComponent as GithubIcon } from './assets/icon-github.svg'
-import { Dialog } from './components/dialog'
+import Dialog from './components/dialog'
 import { useArray } from './utils/useArray'
 
 const loremIpsumApi = 'https://baconipsum.com/api/?type=meat-and-filler&paras=1'
