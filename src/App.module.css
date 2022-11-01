@@ -24,3 +24,12 @@
   color: var(--color-white);
   background-color: var(--color-accent);
 }
+
+.github {
+  width: 72px;
+  height: 72px;
+}
+
+a:focus:has(.github), a:has(.github:hover) {
+  scale: 1.5;
+}

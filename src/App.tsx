@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { useCallback, useState } from 'react'
 import styles from './App.module.css'
+import { ReactComponent as GithubIcon } from './assets/icon-github.svg'
 import { Dialog } from './components/dialog'
 import { useArray } from './utils/useArray'
 
@@ -63,6 +64,14 @@ function App() {
         </button>
 
         <p>Current paragraph count: {paragraphs.value.length}</p>
+
+        <a
+          href="https://github.com/wesleycoder/dialog"
+          aria-label="Github repository"
+          target="_blank"
+        >
+          <GithubIcon className={styles.github} />
+        </a>
 
         <Dialog
           title="Lemon ipsum"
