@@ -28,16 +28,16 @@ export const Dialog = ({ title, children, isOpen, closeOnOverlayClick, onClose }
     dialogRef.current?.addEventListener('close', onClose)
 
     if (isOpen) {
-      dialogRef.current?.showModal()
+      dialogRef.current?.showModal?.()
       document.body.style.overscrollBehaviorY = 'contain'
     } else {
-      dialogRef.current?.close()
+      dialogRef.current?.close?.()
       document.body.style.overscrollBehaviorY = 'auto'
     }
 
     return () => {
-      dialogRef.current?.removeEventListener('close', onClose)
-      dialogRef.current?.removeAttribute('open')
+      dialogRef.current?.removeEventListener?.('close', onClose)
+      dialogRef.current?.removeAttribute?.('open')
       document.body.style.overscrollBehaviorY = 'auto'
     }
   })

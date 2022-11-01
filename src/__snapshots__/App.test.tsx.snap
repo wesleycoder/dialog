@@ -1,0 +1,84 @@
+// Vitest Snapshot v1
+
+exports[`App > should render 1`] = `
+<body>
+  <div>
+    <div
+      class="_content_6dc87e"
+    >
+      <button
+        class="_button_6dc87e _primaryButton_6dc87e"
+      >
+        Open dialog
+      </button>
+      <button
+        class="_button_6dc87e _secondaryButton_6dc87e"
+      >
+        Add paragraph
+      </button>
+      <button
+        class="_button_6dc87e _secondaryButton_6dc87e"
+      >
+        Reset content
+      </button>
+      <p>
+        Current paragraph count: 
+        1
+      </p>
+      <dialog
+        class="_dialog_40d523"
+      >
+        <div
+          class="_wrapper_40d523"
+        >
+          <header
+            class="_header_40d523"
+          >
+            <h2
+              class="_title_40d523"
+            >
+              Lemon ipsum
+            </h2>
+            <button
+              class="_close_40d523"
+            >
+              <svg
+                class="_closeIcon_40d523"
+                fill="none"
+                height="16"
+                role="img"
+                viewBox="0 0 16 16"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15 1L8 8L15 15"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                />
+                <path
+                  d="M1 1L8 8L0.999999 15"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                />
+              </svg>
+            </button>
+          </header>
+          <div
+            class="_content_40d523"
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+A ex error velit labore minima ullam porro doloremque minus assumenda neque quia enim culpa quasi hic,
+facilis quo nemo aliquid dolor?
+            </p>
+            <br />
+          </div>
+        </div>
+      </dialog>
+    </div>
+  </div>
+</body>
+`;
