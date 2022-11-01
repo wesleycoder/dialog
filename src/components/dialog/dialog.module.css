@@ -10,7 +10,7 @@
   border: none;
   overflow: hidden;
   gap: 24px;
-  transition: all .5s ease;
+  transition: top .5s ease;
 }
 
 .dialog:not([open]) {
@@ -27,7 +27,6 @@
 .dialog:modal {
   display: flex;
   flex-direction: column;
-  overscroll-behavior: contain;
 }
 
 .wrapper {
