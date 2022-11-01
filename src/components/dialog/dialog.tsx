@@ -1,66 +1,46 @@
 import {
-  ForwardedRef,
-  forwardRef,
   MouseEventHandler,
   PropsWithChildren,
   ReactNode,
   TouchEventHandler,
   useCallback,
   useEffect,
-  useImperativeHandle,
-  useLayoutEffect,
   useRef,
-  useState,
+  useState
 } from 'react'
 import { ReactComponent as IconClose } from '../../assets/icon-close.svg'
 import styles from './dialog.module.css'
 
-type DialogProps = PropsWithChildren<{ title: ReactNode }>
+type DialogProps = PropsWithChildren<{
+  title: ReactNode
+  isOpen: boolean
+  closeOnOverlayClick: boolean
+  onClose: (this: HTMLDialogElement, ev: Event) => any
+}>
 
-export type DialogHandle = {
-  showModal(): void
-  close(): void
-} & Partial<HTMLDialogElement>
-
-const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<DialogHandle>) => {
+export const Dialog = ({ title, children, isOpen, closeOnOverlayClick, onClose }: DialogProps) => {
   const [isExpanded, setExpanded] = useState(false)
   const [firstTouch, setFirstTouch] = useState<number>(0)
   const [lastTouch, setLastTouch] = useState<number>(0)
   const dialogRef = useRef<HTMLDialogElement>(null)
-  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    dialogRef.current?.addEventListener('close', () => {
-      setIsOpen(false)
-    })
-  })
+    dialogRef.current?.addEventListener('close', onClose)
 
-  useLayoutEffect(() => {
     if (isOpen) {
+      dialogRef.current?.showModal()
       document.body.style.overscrollBehaviorY = 'contain'
     } else {
+      dialogRef.current?.close()
       document.body.style.overscrollBehaviorY = 'auto'
     }
 
     return () => {
+      dialogRef.current?.removeEventListener('close', onClose)
+      dialogRef.current?.removeAttribute('open')
       document.body.style.overscrollBehaviorY = 'auto'
     }
-  }, [isOpen])
-
-  useImperativeHandle(
-    _ref,
-    () => ({
-      showModal() {
-        dialogRef.current?.showModal()
-        setIsOpen(true)
-      },
-      close() {
-        dialogRef.current?.close()
-        dialogRef.current?.removeAttribute('open')
-      },
-    }),
-    []
-  )
+  })
 
   const closeDialog = useCallback(() => {
     setExpanded(false)
@@ -69,10 +49,12 @@ const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<Di
     dialogRef.current?.close()
   }, [])
 
-  const handleClose: MouseEventHandler<HTMLDialogElement> = async e => {
-    const isBackdrop = e.target instanceof Element && e.target.nodeName === 'DIALOG'
+  const handleBackdropClick: MouseEventHandler<HTMLDialogElement> = async e => {
+    if (closeOnOverlayClick) {
+      const isBackdrop = e.target instanceof Element && e.target.nodeName === 'DIALOG'
 
-    if (isBackdrop) closeDialog()
+      if (isBackdrop) closeDialog()
+    }
   }
 
   const handleTouchMove: TouchEventHandler<HTMLDialogElement> = e => {
@@ -119,10 +101,9 @@ const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<Di
   return (
     <dialog
       ref={dialogRef}
-      open={undefined}
       className={styles.dialog}
       onClose={closeDialog}
-      onClick={handleClose}
+      onClick={handleBackdropClick}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
@@ -132,7 +113,7 @@ const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<Di
           <button
             autoFocus
             className={styles.close}
-            onClick={() => dialogRef.current?.close()}
+            onClick={closeDialog}
           >
             <IconClose className={styles.closeIcon} />
           </button>
@@ -142,5 +123,3 @@ const DialogComponent = ({ title, children }: DialogProps, _ref: ForwardedRef<Di
     </dialog>
   )
 }
-
-export const Dialog = forwardRef(DialogComponent)
