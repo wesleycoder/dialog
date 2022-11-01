@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import clsx from 'clsx'
 import styles from './App.module.css'
 import { Dialog, DialogHandle } from './components/dialog'
 
@@ -17,7 +17,7 @@ function App() {
     <>
       <div className={styles.content}>
         <button
-          className={styles.openDialog}
+          className={clsx(styles.button, styles.primaryButton)}
           onClick={() => {
             dialogRef.current?.showModal()
           }}

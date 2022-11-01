@@ -10,6 +10,7 @@
   overflow: hidden;
   gap: 24px;
   transition: top .5s ease;
+  text-align: initial;
 }
 
 .dialog:not([open]) {
@@ -33,8 +34,7 @@
   flex-direction: column;
   flex-grow: 1;
   padding: 32px;
-  padding-bottom: 0;
-  max-height: calc(100% - 32px);
+  max-height: calc(100% - 64px);
 }
 
 .expanded {
@@ -78,7 +78,7 @@
 
 .content {
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
   overflow: auto;
-  padding-bottom: 32px;
 }

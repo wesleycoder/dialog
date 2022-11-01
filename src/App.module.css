@@ -1,15 +1,26 @@
 .content {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   width: 50vw;
   min-height: 10vh;
   align-items: center;
   justify-content: center;
-  color: var(--color-white);
+  text-align: center;
+  color: var(--color-black);
 }
 
-.openDialog {
+.button {
   border: none;
+  padding: 1rem 2rem;
+}
+
+.primaryButton {
   color: var(--color-white);
   background-color: var(--color-primary);
-  padding: 1rem 2rem;
+}
+
+.secondaryButton {
+  color: var(--color-white);
+  background-color: var(--color-accent);
 }
