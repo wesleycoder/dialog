@@ -15,6 +15,7 @@
   padding: 1rem 2rem;
   cursor: pointer;
   width: 100%;
+  text-shadow: 0px 2px 4px var(--color-backdrop);
 }
 
 .primaryButton {

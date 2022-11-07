@@ -14,17 +14,22 @@ exports[`App > should render 1`] = `
       <button
         class="_button_6dc87e _secondaryButton_6dc87e"
       >
-        Add paragraph
+        Add paragraph (count: 
+        1
+        )
       </button>
       <button
         class="_button_6dc87e _secondaryButton_6dc87e"
       >
         Reset content
       </button>
-      <p>
-        Current paragraph count: 
-        1
-      </p>
+      <button
+        class="_button_6dc87e _secondaryButton_6dc87e"
+      >
+        Toggle close on overlay click / touch (
+        off
+        )
+      </button>
       <a
         aria-label="Github repository"
         href="https://github.com/wesleycoder/dialog"

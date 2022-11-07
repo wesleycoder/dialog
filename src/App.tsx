@@ -15,6 +15,7 @@ type LoremResponse = string[]
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
+  const [closeOnOverlayClick, setCloseOnOverlayClick] = useState(false)
   const paragraphs = useArray([defaultText])
 
   const addParagraph = useCallback(async () => {
@@ -53,7 +54,7 @@ function App() {
           className={clsx(styles.button, styles.secondaryButton)}
           onClick={addParagraph}
         >
-          Add paragraph
+          Add paragraph (count: {paragraphs.value.length})
         </button>
 
         <button
@@ -63,7 +64,12 @@ function App() {
           Reset content
         </button>
 
-        <p>Current paragraph count: {paragraphs.value.length}</p>
+        <button
+          className={clsx(styles.button, styles.secondaryButton)}
+          onClick={() => setCloseOnOverlayClick(shouldClose => !shouldClose)}
+        >
+          Toggle close on overlay click / touch ({closeOnOverlayClick ? 'on' : 'off'})
+        </button>
 
         <a
           href="https://github.com/wesleycoder/dialog"
@@ -76,7 +82,7 @@ function App() {
         <Dialog
           title="Lemon ipsum"
           isOpen={isOpen}
-          closeOnOverlayClick={true}
+          closeOnOverlayClick={closeOnOverlayClick}
           onClose={() => setIsOpen(false)}
         >
           {paragraphs.value.map(text => (
