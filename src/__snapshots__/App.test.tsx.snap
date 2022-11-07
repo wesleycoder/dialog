@@ -58,6 +58,7 @@ exports[`App > should render 1`] = `
               Lemon ipsum
             </h2>
             <button
+              aria-label="close"
               class="_close_40d523"
             >
               <svg

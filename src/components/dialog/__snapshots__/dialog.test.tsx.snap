@@ -1,0 +1,163 @@
+// Vitest Snapshot v1
+
+exports[`Dialog > should render hidden if isOpen is false 1`] = `
+<div>
+  <dialog
+    class="_dialog_40d523"
+  >
+    <div
+      class="_wrapper_40d523"
+    >
+      <header
+        class="_header_40d523"
+      >
+        <h2
+          class="_title_40d523"
+        >
+          Lemon ipsum
+        </h2>
+        <button
+          aria-label="close"
+          class="_close_40d523"
+        >
+          <svg
+            class="_closeIcon_40d523"
+            fill="none"
+            height="16"
+            role="img"
+            viewBox="0 0 16 16"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 1L8 8L15 15"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+            <path
+              d="M1 1L8 8L0.999999 15"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+          </svg>
+        </button>
+      </header>
+      <div
+        class="_content_40d523"
+      />
+    </div>
+  </dialog>
+</div>
+`;
+
+exports[`Dialog > should render visible if isOpen is true 1`] = `
+<div>
+  <dialog
+    class="_dialog_40d523"
+    open=""
+  >
+    <div
+      class="_wrapper_40d523"
+    >
+      <header
+        class="_header_40d523"
+      >
+        <h2
+          class="_title_40d523"
+        >
+          Lemon ipsum
+        </h2>
+        <button
+          aria-label="close"
+          class="_close_40d523"
+        >
+          <svg
+            class="_closeIcon_40d523"
+            fill="none"
+            height="16"
+            role="img"
+            viewBox="0 0 16 16"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 1L8 8L15 15"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+            <path
+              d="M1 1L8 8L0.999999 15"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+          </svg>
+        </button>
+      </header>
+      <div
+        class="_content_40d523"
+      />
+    </div>
+  </dialog>
+</div>
+`;
+
+exports[`Dialog > should render with children 1`] = `
+<div>
+  <dialog
+    class="_dialog_40d523"
+    open=""
+  >
+    <div
+      class="_wrapper_40d523"
+    >
+      <header
+        class="_header_40d523"
+      >
+        <h2
+          class="_title_40d523"
+        >
+          Lemon ipsum
+        </h2>
+        <button
+          aria-label="close"
+          class="_close_40d523"
+        >
+          <svg
+            class="_closeIcon_40d523"
+            fill="none"
+            height="16"
+            role="img"
+            viewBox="0 0 16 16"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 1L8 8L15 15"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+            <path
+              d="M1 1L8 8L0.999999 15"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+          </svg>
+        </button>
+      </header>
+      <div
+        class="_content_40d523"
+      >
+        <p>
+          Lemon ipsum dolor sit amet
+        </p>
+      </div>
+    </div>
+  </dialog>
+</div>
+`;

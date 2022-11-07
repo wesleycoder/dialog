@@ -1,21 +1,21 @@
 import {
   MouseEventHandler,
   PropsWithChildren,
-  ReactNode,
+  SyntheticEvent,
   TouchEventHandler,
   useCallback,
-  useEffect,
+  useLayoutEffect,
   useRef,
-  useState
+  useState,
 } from 'react'
 import styles from './dialog.module.css'
 import { ReactComponent as IconClose } from '/assets/icon-close.svg'
 
-type DialogProps = PropsWithChildren<{
-  title: ReactNode
+export type DialogProps = PropsWithChildren<{
+  title: string
   isOpen: boolean
   closeOnOverlayClick: boolean
-  onClose: (this: HTMLDialogElement, ev: Event) => any
+  onClose: <T extends HTMLElement>(this: T, ev: Event) => any
 }>
 
 export const Dialog = ({ title, children, isOpen, closeOnOverlayClick, onClose }: DialogProps) => {
@@ -24,7 +24,7 @@ export const Dialog = ({ title, children, isOpen, closeOnOverlayClick, onClose }
   const [lastTouch, setLastTouch] = useState<number>(0)
   const dialogRef = useRef<HTMLDialogElement>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     dialogRef.current?.addEventListener('close', onClose)
 
     if (isOpen) {
@@ -42,7 +42,7 @@ export const Dialog = ({ title, children, isOpen, closeOnOverlayClick, onClose }
     }
   })
 
-  const closeDialog = useCallback(() => {
+  const closeDialog = useCallback((e: SyntheticEvent<HTMLElement, Event>) => {
     setExpanded(false)
     setFirstTouch(0)
     setLastTouch(0)
@@ -53,7 +53,7 @@ export const Dialog = ({ title, children, isOpen, closeOnOverlayClick, onClose }
     if (closeOnOverlayClick) {
       const isBackdrop = e.target instanceof Element && e.target.nodeName === 'DIALOG'
 
-      if (isBackdrop) closeDialog()
+      if (isBackdrop) dialogRef.current?.close()
     }
   }
 
@@ -112,6 +112,7 @@ export const Dialog = ({ title, children, isOpen, closeOnOverlayClick, onClose }
           <h2 className={styles.title}>{title}</h2>
           <button
             autoFocus
+            aria-label="close"
             className={styles.close}
             onClick={closeDialog}
           >
