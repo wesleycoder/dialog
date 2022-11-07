@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { render } from '../config/test/render'
 import App from './App'
+import { render } from '/config/test/render'
 
 describe('App', () => {
   it('should render', () => {

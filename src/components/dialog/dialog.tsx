@@ -8,8 +8,8 @@ import {
   useRef,
   useState
 } from 'react'
-import { ReactComponent as IconClose } from '../../assets/icon-close.svg'
 import styles from './dialog.module.css'
+import { ReactComponent as IconClose } from '/assets/icon-close.svg'
 
 type DialogProps = PropsWithChildren<{
   title: ReactNode
