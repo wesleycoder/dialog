@@ -15,7 +15,7 @@ type LoremResponse = string[]
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
-  const [closeOnOverlayClick, setCloseOnOverlayClick] = useState(false)
+  const [closeOnOverlayClick, setCloseOnOverlayClick] = useState(true)
   const paragraphs = useArray([defaultText])
 
   const addParagraph = useCallback(async () => {
