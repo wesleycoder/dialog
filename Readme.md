@@ -1,5 +1,7 @@
 # Dialog
 
+> test
+
 > A simple dialog component made for practice and experimentation for showing my skills.
 
 ![Dialog](./docs/dialog.gif)
